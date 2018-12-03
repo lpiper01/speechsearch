@@ -1,4 +1,3 @@
-loadDatabase();
 window.SpeechRecognition = window.SpeechRecognition ||
     window.webkitSpeechRecognition ||
     null;
@@ -17,7 +16,7 @@ recognizer.addEventListener('result', function(event) {
 	console.log(event.results[i][0].transcript);
 	result = event.results[i][0].transcript.split(" ");
 	console.log(result);
-	// now, pass this into a function that does fun stuff and compares this shit to possible responses.
+	getResponse(event.results[i][0]);
     }
 
 });
@@ -39,9 +38,4 @@ document.getElementById('button-stop').addEventListener('click', function() {
     console.log('Stopped');
 });
 
-function getResponse (str) {
-    /// RESPONSE PHRASES WE WANT TO GENERATE:
-
-
-}
-
+getResponse("jovial");
