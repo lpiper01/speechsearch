@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Speech Recognition</title>
+	</head>
+
+	<body>		
+		<button type="button" id="button-play" class="button">GO</button>
+		<button type="button" id="button-stop" class="button">STOP</button>
+		<script>
+			window.SpeechRecognition = window.SpeechRecognition ||
+						   window.webkitSpeechRecognition ||
+						   null;
+
+
+			// Initialize the recognizer object
+			var recognizer = new SpeechRecognition();
+			recognizer.continuous = true;
+
+			recognizer.addEventListener('result', function(event) {
+				for (var i = event.resultIndex; i <  event.results.length; i++) {	
+					console.log(event.results[i][0].transcript);
+				}
+			});
+
+			// Starts the recording when the play button is clicked
+			document.getElementById('button-play').addEventListener('click', function() {
+				recognizer.interimResults = false;
+				try {
+					recognizer.start();
+					console.log("STARTED");
+				} catch(ex) {
+					console.log("Error");
+				}
+			});
+
+			// ends recording when the stop button is clicked
+			document.getElementById('button-stop').addEventListener('click', function() {
+				recognizer.stop();
+				console.log('Stopped');
+			});
+
+		</script>
+	</body>
+</html>
