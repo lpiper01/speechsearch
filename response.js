@@ -6,6 +6,9 @@ function getResponse(str) {
     console.log(database[str]);
 }
 
+
+
+
 function determineType(str) {
     var define = 0;
     var question = 0;
@@ -22,5 +25,5 @@ function determineType(str) {
 	}
     }
 
-    
+
 }
